@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 int choix;
+int N,i;
+float note;
 struct AjouEtu{
     char CNE [15];
     char Nom[10];
@@ -22,8 +24,8 @@ printf("Quel est votre choix ? ");
    return choix;
 }
 
-void AjoutEtud(int i){
-    int N;
+void AjoutEtud(){
+    
 printf("veuillez saisir le Nombre d'etudiant : ");
 scanf("%d",&N);
 printf("veuillez saisir les elements suivant : \n");
@@ -38,15 +40,15 @@ for(i = 0; i< N; i++){
 }
 
 void SaisirNotes (){
-    float note;
-    int indice;
-
+    float S,M,Mg;
     printf("veuillez choisier CNE d'etudiant pour ajoute les notes :");
-    scanf("%d",&indice-1);
-    printf("L'etudiant %s %s saisir les notes : \n",Etudient[indice].Nom,Etudient[indice].Prenom);
-    for(indice=0; indice<4; indice++){
-    printf(" saisir les notes %d : ",indice+1);
+    scanf("%d",&i-1);
+    printf("L'etudiant %s %s saisir les notes : \n",Etudient[i].Nom,Etudient[i].Prenom);
+    for(i=0; i<4; i++){
+    printf(" saisir les notes %d : ",i+1);
     scanf("%f",&note);
+    S+= note;
+
     do{
             if (note < 0 || note > 20)
             {
@@ -59,17 +61,25 @@ void SaisirNotes (){
       
          
     }
+    M = S /4;
+    printf("La Moyenne des notes : %.2f\n",M);
+
+    Mg =M /N;
+    printf("Moyenne general d'etudiants : %.2f\n",Mg);
+
+
 }
 
-float CalculMoyen(){
-    int N; 
-
+void AfficherEtudient(){
+    for(i=0; i<N; i++){
+    printf("Etudiant %d: %s %s %s",i+1,Etudient[i].CNE,Etudient[i].Prenom,Etudient[i].Nom);
+}
 }
 
 int main (){
-    int i;
-    AjoutEtud(i);
-    SaiserNotes ();
 
+    AjoutEtud();
+    SaisirNotes();
+    AfficherEtudient();
     return 0;
 }
